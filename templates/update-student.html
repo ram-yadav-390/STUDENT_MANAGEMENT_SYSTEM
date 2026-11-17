@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Student</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 35px 20px;
+
+            font-family: 'Poppins', sans-serif;
+
+            background: linear-gradient(135deg,
+                    #0f172a,
+                    #172554,
+                    #312e81);
+
+            color: white;
+        }
+
+        /* MAIN CONTAINER */
+
+        .container {
+            width: 100%;
+            max-width: 750px;
+
+            padding: 40px;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35),
+                inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+            animation: fadeUp 0.7s ease;
+        }
+
+        /* HEADER */
+
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        .header h1 span {
+            color: #38bdf8;
+        }
+
+        .header p {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 8px;
+        }
+
+        /* FORM GRID */
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            font-weight: 500;
+            color: #cbd5e1;
+            margin-bottom: 9px;
+        }
+
+        /* INPUT FIELDS */
+
+        .form-group input,
+        .form-group select {
+
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border-radius: 11px;
+
+            outline: none;
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            background: rgba(255, 255, 255, 0.07);
+
+            color: white;
+
+            font-family: inherit;
+            font-size: 13px;
+
+            transition: 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+
+            border-color: #38bdf8;
+
+            background: rgba(56, 189, 248, 0.08);
+
+            box-shadow:
+                0 0 0 3px rgba(56, 189, 248, 0.12),
+                0 5px 20px rgba(56, 189, 248, 0.1);
+
+        }
+
+        .form-group input::placeholder {
+            color: #64748b;
+        }
+
+        /* SELECT OPTIONS */
+
+        .form-group select option {
+            background: #172554;
+            color: white;
+        }
+
+        /* GENDER */
+
+        .gender-options {
+            display: flex;
+            gap: 15px;
+        }
+
+        .gender-options label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 12px 15px;
+
+            border-radius: 11px;
+
+            background: rgba(255, 255, 255, 0.07);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            transition: 0.3s ease;
+        }
+
+        .gender-options label:hover {
+            border-color: #38bdf8;
+            background: rgba(56, 189, 248, 0.1);
+        }
+
+        .gender-options input {
+            accent-color: #38bdf8;
+            width: auto;
+            cursor: pointer;
+        }
+
+        /* FULL WIDTH */
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        /* BUTTONS */
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 32px;
+        }
+
+        .add-btn {
+            flex: 1;
+
+            padding: 14px;
+
+            border: none;
+            border-radius: 12px;
+
+            color: white;
+
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+
+            background: linear-gradient(135deg,
+                    #0ea5e9,
+                    #6366f1);
+
+            cursor: pointer;
+
+            box-shadow: 0 5px 20px rgba(56, 189, 248, 0.25);
+
+            transition: 0.3s ease;
+        }
+
+        .add-btn:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 10px 30px rgba(56, 189, 248, 0.4);
+        }
+
+        .back-btn {
+            flex: 1;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-decoration: none;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            color: #cbd5e1;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            background: rgba(255, 255, 255, 0.08);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            transition: 0.3s ease;
+        }
+
+        .back-btn:hover {
+            color: white;
+
+            background: rgba(255, 255, 255, 0.15);
+
+            transform: translateY(-4px);
+        }
+
+        /* ANIMATION */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 600px) {
+
+            .container {
+                padding: 25px;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .full-width {
+                grid-column: span 1;
+            }
+
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+        }
+
+        @media(prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* LABEL STYLING */
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+            letter-spacing: 0.4px;
+            transition: 0.3s ease;
+        }
+
+        /* LABEL HOVER EFFECT */
+
+        .form-group:focus-within>label {
+            color: #38bdf8;
+        }
+
+        /* NUMBER INPUT ARROWS REMOVAL */
+
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <h1>Rework <span>Student</span></h1>
+
+            <p>Enter updated information to modify student.</p>
+
+        </div>
+
+
+        <!-- FORM -->
+
+        <form action="/students/{{std[0]}}/update" method="post">
+
+            <div class="form-grid">
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label>Student Name</label>
+
+                    <input type="text" name="name" value="{{std[1]}}" required>
+
+                </div>
+
+
+                <!-- AGE -->
+
+                <div class="form-group">
+
+                    <label>Age</label>
+
+                    <input type="number" name="age" placeholder="Enter age" min="1" required value={{std[2]}}>
+
+                </div>
+
+
+                <!-- GENDER -->
+
+                <div class="form-group">
+
+                    <label>Gender</label>
+
+                    <div class="gender-options">
+
+                        <label>
+                            <input type="radio" name="gender" value="M" 
+                            {%if std[3]=='M'%}checked{%endif%}>
+                            Male
+                        </label>
+
+                        <label>
+                            <input type="radio" name="gender" value="F"
+                            {%if std[3]=='F'%}checked{%endif%}>
+                            Female
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MARKS -->
+
+                <div class="form-group">
+
+                    <label>Marks</label>
+
+                    <input type="number" name="marks" placeholder="Enter marks" min="0" max="100" required value={{std[4]}}>
+
+                </div>
+
+
+                <!-- COURSE -->
+
+                <div class="form-group">
+
+                    <label>Course</label>
+
+                    <input type="text" name="course" placeholder="Enter course name" required value={{std[5]}}>
+
+                </div>
+
+
+                <!-- IMAGE -->
+
+                <div class="form-group">
+
+                    <label>Profile Image URL</label>
+
+                    <input type="text" name="image" placeholder="Paste image URL" required value={{std[6]}}>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="form-group full-width">
+
+                    <label>Attendance Status</label>
+
+                    <select name="status" required>
+
+                        <option value="" disabled selected>
+                            Select attendance status
+                        </option>
+
+                        <option value="1" 
+                        {%if std[7]==1%}selected{%endif%}>
+                            Present
+            
+                    </option>
+
+                        <option value="0"
+                        {%if std[7]==0%}selected{%endif%}>Absent</option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="buttons">
+
+                <button type="submit" class="add-btn">
+                    🗘 Update Details
+                </button>
+
+                <a href="/students" class="back-btn">
+                    ← Back to Dashboard
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>

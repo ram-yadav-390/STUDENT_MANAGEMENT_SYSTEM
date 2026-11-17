@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Details</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: 'Poppins', sans-serif;
+
+            background: linear-gradient(135deg,
+                    #0f172a,
+                    #172554,
+                    #312e81);
+
+            padding: 30px;
+            color: white;
+        }
+
+        /* MAIN CARD */
+
+        .card {
+            width: 100%;
+            max-width: 850px;
+
+            display: flex;
+            align-items: center;
+            gap: 40px;
+
+            padding: 35px;
+
+            background: rgba(255, 255, 255, 0.09);
+
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            border: 1px solid rgba(255, 255, 255, 0.18);
+
+            border-radius: 25px;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35),
+                inset 0 1px 1px rgba(255, 255, 255, 0.15);
+
+            animation: fadeUp 0.8s ease;
+            transition: 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.45),
+                0 0 25px rgba(56, 189, 248, 0.15);
+        }
+
+        /* IMAGE SECTION */
+
+        .image-section {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-section img {
+            width: 100%;
+            max-width: 300px;
+            height: 350px;
+
+            object-fit: cover;
+
+            border-radius: 20px;
+
+            border: 3px solid rgba(255, 255, 255, 0.2);
+
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3);
+
+            transition: 0.4s ease;
+        }
+
+        .image-section img:hover {
+            transform: scale(1.04);
+            box-shadow: 0 10px 35px rgba(56, 189, 248, 0.25);
+        }
+
+        /* DETAILS SECTION */
+
+        .details {
+            flex: 1;
+        }
+
+        .details h1 {
+            font-size: 27px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .details h1 span {
+            color: #38bdf8;
+        }
+
+        .subtitle {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-bottom: 30px;
+        }
+
+        /* INDIVIDUAL DETAILS */
+
+        .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 12px 15px;
+
+            margin-bottom: 12px;
+
+            background: rgba(255, 255, 255, 0.06);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 12px;
+
+            transition: 0.3s ease;
+        }
+
+        .info:hover {
+            background: rgba(56, 189, 248, 0.12);
+
+            border-color: rgba(56, 189, 248, 0.4);
+
+            transform: translateX(6px);
+        }
+
+        .info span:first-child {
+            color: #94a3b8;
+            font-size: 13px;
+        }
+
+        .info span:last-child {
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* STATUS */
+
+        .status {
+            padding: 5px 13px;
+            border-radius: 20px;
+            font-size: 11px !important;
+        }
+
+        .present {
+            color: #4ade80 !important;
+            background: rgba(34, 197, 94, 0.15);
+            border: 1px solid rgba(34, 197, 94, 0.4);
+        }
+
+        .absent {
+            color: #f87171 !important;
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.4);
+        }
+
+        /* BACK BUTTON */
+
+        .back-btn {
+            display: block;
+
+            text-align: center;
+
+            margin-top: 25px;
+            padding: 12px;
+
+            text-decoration: none;
+
+            color: white;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            border-radius: 12px;
+
+            background: linear-gradient(135deg,
+                    #0ea5e9,
+                    #6366f1);
+
+            box-shadow: 0 5px 20px rgba(56, 189, 248, 0.2);
+
+            transition: 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-4px);
+
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.4);
+        }
+
+        /* ANIMATION */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width: 700px) {
+
+            .card {
+                flex-direction: column;
+                padding: 25px;
+                gap: 25px;
+            }
+
+            .image-section img {
+                height: 260px;
+            }
+
+            .details {
+                width: 100%;
+            }
+
+            .details h1 {
+                font-size: 23px;
+            }
+
+        }
+
+        @media(prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="card">
+
+        <!-- IMAGE -->
+
+        <div class="image-section">
+
+            <img src="{{std[6]}}" alt="Student Image">
+
+        </div>
+
+
+        <!-- STUDENT DETAILS -->
+
+        <div class="details">
+
+            <h1>Student <span>Profile</span></h1>
+
+            <p class="subtitle">
+                Complete student information
+            </p>
+
+
+            <div class="info">
+                <span>Student ID</span>
+                <span>{{std[0]}}</span>
+            </div>
+
+            <div class="info">
+                <span>Name</span>
+                <span>{{std[1]}}</span>
+            </div>
+
+            <div class="info">
+                <span>Age</span>
+                <span>{{std[2]}}</span>
+            </div>
+
+            <div class="info">
+                <span>Gender</span>
+                <span>{{std[3]}}</span>
+            </div>
+
+            <div class="info">
+                <span>Marks</span>
+                <span>{{std[4]}}</span>
+            </div>
+
+            <div class="info">
+                <span>Course</span>
+                <span>{{std[5]}}</span>
+            </div>
+
+            <div class="info">
+
+                <span>Attendance</span>
+
+                {% if std[7] %}
+
+                <span class="status present">
+                    Present
+                </span>
+
+                {% else %}
+
+                <span class="status absent">
+                    Absent
+                </span>
+
+                {% endif %}
+
+            </div>
+
+
+            <!-- BACK BUTTON -->
+
+            <a href="/students" class="back-btn">
+                ← Back to Dashboard
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
