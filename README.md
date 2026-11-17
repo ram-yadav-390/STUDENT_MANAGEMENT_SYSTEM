@@ -1,3 +1,4 @@
+<div align="center">
 
 # 📒 ClassLedger (STUDENT MANAGEMENT SYSTEM)
 
@@ -9,6 +10,7 @@
 ![Jinja2](https://img.shields.io/badge/Jinja2-B41717?logo=jinja&logoColor=white)
 ![Pydantic](https://img.shields.io/badge/Pydantic-E92063?logo=pydantic&logoColor=white)
 
+</div>
 ---
 
 ## 🧭 At a Glance
